@@ -2,7 +2,7 @@
 #   prints out a packing list for that vacation type
 
 ###############################################################################
-# TODO: 1. (5 pts)
+# DONE: 1. (5 pts)
 #
 #   For this module, we are going to create a vacation planner that will help
 #   the user plan what they need to bring on vacation.
@@ -28,9 +28,21 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
+def starter_list(type):
+    match type:
+        case "hiking":
+            items = ["water bottle", "sunglasses", "boots"]
+        case "cruise":
+            items = ["money", "swimsuit", "towel"]
+        case "amusement_park":
+            items = ["ticket", "wallet", "your children"]
+        case _:
+            items = []
+    return items
+
 
 ###############################################################################
-# TODO: 2. (4 pts)
+# DONE: 2. (4 pts)
 #
 #   Now, perhaps the user would like to bring some of their own stuff that they
 #   specify.
@@ -48,9 +60,19 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
+gathering = True
+def gather_items():
+    added_items = []
+    while gathering == True:
+        addition = input("Please enter an item: ")
+        if addition == "end":
+            break
+        else:
+            added_items.append(addition)
+    return added_items
 
 ###############################################################################
-# TODO: 3. (6 pts)
+# DONE: 3. (6 pts)
 #
 #   For this _TODO_, write a function called main() that will start things off.
 #
@@ -76,3 +98,16 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
+
+def main():
+    print("Hello, user!")
+    type = input("Please enter a vacation type: ")
+    starter_list(type)
+    for x in starter_list(type):
+        print(x)
+    print("Are there any specific items to add? Enter \"end\" if finished.")
+    ultimate_list = starter_list(type) + gather_items()
+    for y in ultimate_list:
+        print(y)
+    print("Have a nice day!")
+main()
