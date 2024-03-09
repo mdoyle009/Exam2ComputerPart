@@ -30,10 +30,13 @@
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
 
-
+def get_step(num):
+    details = input(f"Please enter the details for step {num}: ")
+    step = f"{num}) {details}"
+    return step
 
 ###############################################################################
-# TODO: 2. (7 pts)
+# DONE: 2. (7 pts)
 #
 #   For this _TODO_, write a function called main() that will start everything
 #   off.
@@ -65,15 +68,19 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
-def get_step(num):
-    step = input(f"Please enter the details for step {num}: ")
-    return f"{num} {step}"
 
 running = True
 def main():
+    print("Time to make a recipe!")
+    list = []
     num = 1
     while running == True:
-        sum = get_step(num)
-        num += 1
-        
+        addition = get_step(num)
+        if "end" in addition:
+            break
+        else:
+            list.append(addition)
+            num += 1
+    for x in list:
+        print(x)   
 main()
