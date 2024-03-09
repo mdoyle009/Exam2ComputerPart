@@ -56,8 +56,7 @@ def get_price():
 def toy_price(toy, price):
     toy = str(toy)
     price = float(price)
-    pair = (toy, price)
-    return pair
+    return (toy, price)
 
 ###############################################################################
 # TODO: 4. (5 pts)
@@ -78,8 +77,10 @@ def toy_price(toy, price):
 ###############################################################################
 
 def calculate_total_price(toys):
-    for x in toy_price(toy, price):
-        total = x[1]
+    cost = 0
+    for (toy, price) in toys:
+        cost += price
+    return cost
 
 ###############################################################################
 # TODO: 5. (8 pts)
@@ -108,3 +109,23 @@ def calculate_total_price(toys):
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
+
+running = True
+def main():
+    toy_list = []
+    while running == True:
+        toy = get_toy()
+        if toy == "end":
+            break
+        price = get_price()
+        if price == "end":
+            break
+        tuple = toy_price(toy, price)
+        conversion = list(tuple)
+        toy_list.append(conversion)
+    print(toy_list)
+    for (toy, price) in toy_list:
+        print(f"{toy} costs ${price}")
+    cost = calculate_total_price(toy_list)
+    print(f"Total Cost: ${cost}")
+main()
